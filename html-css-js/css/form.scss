@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
+
+$font: 'Montserrat';
+$bg: url(../img/bg.jpg);
+$accent: #ECB650;
+$dark-accent: #EC8532;
+$red: red;
+$lightgray: lightgray;
+$darkgray: #555;
+$gray: gray;
+$outline-color: #222;
+$light-text-color: white;
+$dark-text-color: black;
+$gray-gradient: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.3) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.4) 0%, rgba(0, 0, 0, 0.39) 120%) #8a8989;
+
+
+*{
+    font-family: $font, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    margin:0;
+    padding:0;
+    width: 100vw;
+    height: 100vh;
+}
+
+#task-frontend{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    .bg{
+        position: fixed;
+        height: 110%;
+        width: 110%;
+        top:-5%;
+        left:-5%;
+        z-index: -999;
+
+        background: $bg;
+        background-position: 66%;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        filter: blur(6px);
+    }
+
+    form{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width:min-content;
+        position:relative;
+        z-index: 1;
+        margin:0;
+        padding:2em;
+
+        background: $gray;
+        background: $gray-gradient;
+        background-blend-mode: multiply,multiply;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px 0px $outline-color;
+
+        color: $light-text-color;
+        text-shadow:
+        -1px -1px 0 $outline-color,  
+         1px -1px 0 $outline-color,
+         -1px 1px 0 $outline-color,
+          1px 1px 0 $outline-color,
+          0px 0px 2px $outline-color;
+
+        animation: opacityIn 0.5s 0.2s ease-out backwards;
+    
+        & > *:not(:first-child){
+            margin-top:1.5rem;
+        }
+
+        .logo{
+            @media screen and (max-height: 750px) {
+                display: none;
+            }
+        }
+
+        .basic-title{
+            font-size: 2em;
+            text-align: center;
+        }
+
+        .textbox-wrapper{
+            position:relative;
+
+            label{
+                position: absolute;
+                margin: 0.5em;
+                top: 0;
+                left: 0;
+                color: $dark-text-color;
+                text-shadow: none;
+                cursor: text;
+
+                transition: all 0.5s;
+
+                &.active{
+                    position: absolute;
+                    cursor: default;
+                    top: -1.8em;
+                    left: -0.2em;
+                    font-size: 0.8em;
+
+                    color: $light-text-color;
+                    text-shadow:
+                    -1px -1px 0 $outline-color,  
+                        1px -1px 0 $outline-color,
+                        -1px 1px 0 $outline-color,
+                        1px 1px 0 $outline-color,
+                        0px 0px 2px $outline-color;
+                            }
+
+                            transition: all 0.5s;
+            }
+    
+            input[type]{
+                width: 70vw;
+                max-width: 500px;
+                padding: 0.5em;
+                font-size: 1em;
+                color: $dark-text-color;
+                text-shadow: none;
+                box-shadow: 0 0 5px $darkgray;
+                border: 1px solid $light-text-color;
+                outline: none;
+                border-radius: 2px;
+                
+                &:focus, &:active{
+                    outline: 2px solid $accent;
+                }
+
+                &.error{
+                    outline: 2px solid $red;
+                }
+            }
+
+        }
+
+        .checkbox-grid{
+            display:flex;
+            flex-wrap: wrap;
+            margin-top: 5px;
+            justify-content: center;
+
+            > div{
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+
+                > div{
+                    margin: 0.25em 1em;
+                }
+            }
+
+            &.error{
+                outline: 2px solid $red;
+                border-radius: 5px;
+            }
+
+            .checkbox-wrapper{
+                cursor: default;
+
+                input[type=checkbox]{
+                    appearance: none;
+    
+                    &:before{
+                        content: "\2713";
+                        width: 1em;
+                        height: 1em;
+                        display:inline-block;
+                        background: $light-text-color;
+                        border-radius: 2px;
+                        padding: 0px 1px 5px 4px;
+    
+                        transition: background-color 0.2s ease-in-out;
+                    }
+    
+                    &:checked:before{
+                        content: "\2713";
+                        width: 1em;
+                        height: 1em;
+                        display:inline-block;
+                        background: $accent;
+                        border-radius: 2px;
+                        padding: 0px 1px 5px 4px;
+    
+                        transition: background-color 0.2s ease-in-out;
+                    }
+                }
+            }
+        }
+        
+        
+        input[type=submit] {
+            display: block;
+            padding: 0.6em 1em;
+            font-size: 1.25em;
+            
+            border: 1px solid $light-text-color;
+            color: $light-text-color;            
+            box-shadow: 0 0 5px -1px $darkgray;
+            border-radius: 5px;
+            cursor: pointer;
+            
+            background: $accent;
+            background-image: linear-gradient(140deg, $dark-accent 0%, $accent 50%, $dark-accent 100%);
+            background-size: 200% auto;
+            text-shadow: 0px 0px 2px $outline-color;
+
+            transition: 0.5s;
+
+            &:hover, &:focus, &:active{
+                background-position: right center; /* change the direction of the change here */
+            }
+        }
+        
+
+
+        
+    }
+
+    footer{
+        position:absolute;
+        font-size: 0.8em;
+        bottom: 1em;
+        color: $lightgray;
+        text-align: center;
+        text-shadow:
+        -1px -1px 0 $outline-color,  
+         1px -1px 0 $outline-color,
+         -1px 1px 0 $outline-color,
+          1px 1px 0 $outline-color;
+
+        a{
+            color:$gray;
+            text-underline-offset: 2px;
+            transition: all 0.2s;
+
+            &:hover, &:focus, &:active{
+                color: $darkgray;
+                transition: all 0.2s;
+            }
+        }
+    }
+}
+
+
+@keyframes opacityIn {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}

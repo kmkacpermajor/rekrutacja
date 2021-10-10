@@ -1,148 +1,274 @@
-/*
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    AKAI Frontend Task - CSS
-
-    Spróbuj zmodyfikować poniższy plik ze stylami tak, by upiększyć formularz na stronie.
-    Jako inspiracji możesz skorzystać z szablonu znajdującego się w pliku img/layout.png
-    Nie wymagamy, by wykonać identyczny layout. Liczy się kreatywność.
-
-    Przy wykonywaniu zadania można zmienić strukturę pliku index.html.
-    Pamiętaj, że w takim wypadku będzie trzeba zadbać o dostosowanie odpowiednich selektorów.
-
-    Jeśli korzystasz z preprocessorów takich jak Sass/Less, również możesz się tym pochwalić.
-
-    Powodzenia!
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-*/
-
-
-/*
-Przeanalizuj składnię pliku .css.
-Przy stylowaniu na najpierw podajemy, co chcemy ostylować, a następnie jakie atrybuty chcemy zmienić.
-np. poniższy selektor (body) oznacza, że modyfikujemy kontent body w dokumencie html.
-Żeby mieć pewność o czym mowa, zajrzyj w plik index.html, i znajdź tag <body>.
-*/
-body {
-  /*
-  wszystko co znajduje się pomiędzy nawiasami klamrowymi, to nasze polecenia modyfikujące określony element dokumentu
-  Poniżej zmieniamy atrybut font-family, który jest odpowiedzialny za wyświetlaną na stronie czcionkę
-  Zastanów się, czy Comic Sans jest odpowiedni.
-  Jeśli nie, wybierz inną czcionkę i zmodyfikuj poniższy tekst.
-  */
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap");
+* {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-/*
-selektor gwiazdki oznacza, że odnosimy się do konkretnego 'id' w pliku html.
-w tym przypadku odnosimy się do id "task-frontend".
-Zobacz, co się kryje pod tym id w pliku index.html.
-*/
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+}
 
 #task-frontend {
-  /*
-  pomiędzy nawiasami klamrowymi ponownie możemy modyfikować atrybuty wybranego elementu.
-  Opiszę krótko, co dzieje się w poniższym przykładzie:
-  */
-
-  /*
-  border modyfikuje obramowanie elementu. Obramowanie zawiera w sobie trzy atrybuty: grubość, styl i kolor.
-  Można się do nich odnosić indywidualnie, albo do wszystkich na raz, tak jak jest to zrobione poniżej.
-  Spróbuj dostosować obramowanie tak, żeby lepiej się prezentowało. Oczywiście, jeśli uważasz, że obramowanie nie jest potrzebne,
-  możesz zrezygnować z modyfikacji tego atrybutu. Domyślnie elementy nie posiadają obramowania, więc wystarczy usunąć poniższą linię.
-  */
-  border: 4px solid black;
-
-  /*
-  max-width ustawia maksymalną szerokość dla wybranego elementu. Oznacza to, że element osiągnie co najwyżej taką szerokość.
-  Natomiast jeśli nie będzie to możliwe (okno będzie mniejsze), to element skurczy się wraz z tym oknem.
-  */
-	max-width: 850px;
-
-  /*
-  atrybut margin definiuje miejsce wolne poza obramowaniem elementu.
-  margin jest jednym ze składowych bardzo ważnego pojęcia w CSS, które nazywamy Box Model.
-  Zachęcam do poczytania więcej na ten temat, np. pod adresem:
-  https://www.w3schools.com/css/css_boxmodel.asp
-
-  W poniższym przypadku ustawiamy wartość margin na górze i dole równą 0, zaś po bokach 'auto' - co oznacza,
-  że wartości po lewej i prawej będą obliczone przez przeglądarkę podczas renderowania strony, tak, aby margin-left i margin-right
-  otrzymały taką samą wartość, co będzie skutowało tym, że element zostanie na stronie wycentrowany.
-  */
-  margin: 0 auto;
-
-  /*
-  atrybut text-align definiuje horyzontalne umieszczenie (wyrównanie) tekstu.
-  Wartość center oznacza, że chcemy umieścić tekst na środku.
-  */
-	text-align: center;
-
-  /*
-  background-color definiuje kolor tła w elemencie.
-  CSS zawiera prefediniowane wartości takie jak white, red, black, etc, ale można również tworzyć własne
-  poprzez podanie odpowiedniej wartości rgba
-  */
-  background-color: white;
-
-  /*
-  zamykająca klamra oznacza, że kończymy modyfikować atrybuty danego elementu
-  */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
-
-/*
-jeśli widzisz dwa elementy (A, B) oddzielone spacją, oznacza to, że modyfikujemy wszystkie elementy B, które zawierają się w A.
-W poniższym przypadku modyfikujemy wszystkie elementy z klasą "basic-title", które znajdują się w elemencie o id "task-frontend".
-*/
-#task-frontend .basic-title {
-  /*
-  atrybut 'color' definiuje kolor tekstu w elemencie.
-  Zastanów się, czy kolor czerwony jest odpowiedni.
-  Jeśli nie, zmodyfikuj poniższy tekst wedle własnego uznania.
-  */
-  color: red;
+#task-frontend .bg {
+  position: fixed;
+  height: 110%;
+  width: 110%;
+  top: -5%;
+  left: -5%;
+  z-index: -999;
+  background: url(../img/bg.jpg);
+  background-position: 66%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  -webkit-filter: blur(6px);
+          filter: blur(6px);
 }
 
-/*
-podobna sytuacja występuje poniżej. Wybieramy wszystkie elementy z klasą 'form-line' znajdujące się w elemencie o id 'task-frontend'.
-*/
-#task-frontend .form-line {
-  border: 1px solid blue;
+#task-frontend form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 2em;
+  background: gray;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.15)), to(rgba(0, 0, 0, 0.3))), radial-gradient(at top center, rgba(255, 255, 255, 0.4) 0%, rgba(0, 0, 0, 0.39) 120%) #8a8989;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.3) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.4) 0%, rgba(0, 0, 0, 0.39) 120%) #8a8989;
+  background-blend-mode: multiply,multiply;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 10px 0px #222;
+          box-shadow: 0px 0px 10px 0px #222;
+  color: white;
+  text-shadow: -1px -1px 0 #222, 1px -1px 0 #222, -1px 1px 0 #222, 1px 1px 0 #222, 0px 0px 2px #222;
+  -webkit-animation: opacityIn 0.5s 0.2s ease-out backwards;
+          animation: opacityIn 0.5s 0.2s ease-out backwards;
 }
 
-
-/*
-znasz już sposób definiowania selektorów.
-Oczywiście nie przerobiliśmy jeszcze wszystkich. W związku z tym zachęcam Cię do zapoznania się z innymi selektorami, np. tutaj:
-https://www.w3schools.com/cssref/css_selectors.asp
-Chciałbym, byś przeanalizowała / przeanalizował poniższe style i zmodyfikować je według własnego uznania.
-*/
-
-#task-frontend form>label {
-  text-transform: uppercase;
-	margin: 10px auto 0 auto;
+#task-frontend form > *:not(:first-child) {
+  margin-top: 1.5rem;
 }
 
-#task-frontend input[type="text"], #task-frontend input[type="email"] {
+@media screen and (max-height: 750px) {
+  #task-frontend form .logo {
+    display: none;
+  }
+}
+
+#task-frontend form .basic-title {
+  font-size: 2em;
+  text-align: center;
+}
+
+#task-frontend form .textbox-wrapper {
+  position: relative;
+}
+
+#task-frontend form .textbox-wrapper label {
+  position: absolute;
+  margin: 0.5em;
+  top: 0;
+  left: 0;
+  color: black;
+  text-shadow: none;
+  cursor: text;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+#task-frontend form .textbox-wrapper label.active {
+  position: absolute;
+  cursor: default;
+  top: -1.8em;
+  left: -0.2em;
+  font-size: 0.8em;
+  color: white;
+  text-shadow: -1px -1px 0 #222, 1px -1px 0 #222, -1px 1px 0 #222, 1px 1px 0 #222, 0px 0px 2px #222;
+}
+
+#task-frontend form .textbox-wrapper input[type] {
+  width: 70vw;
+  max-width: 500px;
+  padding: 0.5em;
+  font-size: 1em;
+  color: black;
+  text-shadow: none;
+  -webkit-box-shadow: 0 0 5px #555;
+          box-shadow: 0 0 5px #555;
+  border: 1px solid white;
+  outline: none;
+  border-radius: 2px;
+}
+
+#task-frontend form .textbox-wrapper input[type]:focus, #task-frontend form .textbox-wrapper input[type]:active {
+  outline: 2px solid #ECB650;
+}
+
+#task-frontend form .textbox-wrapper input[type].error {
+  outline: 2px solid red;
+}
+
+#task-frontend form .checkbox-grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 5px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#task-frontend form .checkbox-grid > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+#task-frontend form .checkbox-grid > div > div {
+  margin: 0.25em 1em;
+}
+
+#task-frontend form .checkbox-grid.error {
+  outline: 2px solid red;
+  border-radius: 5px;
+}
+
+#task-frontend form .checkbox-grid .checkbox-wrapper {
+  cursor: default;
+}
+
+#task-frontend form .checkbox-grid .checkbox-wrapper input[type=checkbox] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+#task-frontend form .checkbox-grid .checkbox-wrapper input[type=checkbox]:before {
+  content: "\2713";
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  background: white;
+  border-radius: 2px;
+  padding: 0px 1px 5px 4px;
+  -webkit-transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
+}
+
+#task-frontend form .checkbox-grid .checkbox-wrapper input[type=checkbox]:checked:before {
+  content: "\2713";
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  background: #ECB650;
+  border-radius: 2px;
+  padding: 0px 1px 5px 4px;
+  -webkit-transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
+}
+
+#task-frontend form input[type=submit] {
   display: block;
-  margin: 10px auto;
-  border: 1px solid black;
-  width: 250px;
-  height: 30px;
+  padding: 0.6em 1em;
+  font-size: 1.25em;
+  border: 1px solid white;
+  color: white;
+  -webkit-box-shadow: 0 0 5px -1px #555;
+          box-shadow: 0 0 5px -1px #555;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #ECB650;
+  background-image: linear-gradient(140deg, #EC8532 0%, #ECB650 50%, #EC8532 100%);
+  background-size: 200% auto;
+  text-shadow: 0px 0px 2px #222;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
-#task-frontend span {
-  display: block;
+#task-frontend form input[type=submit]:hover, #task-frontend form input[type=submit]:focus, #task-frontend form input[type=submit]:active {
+  background-position: right center;
+  /* change the direction of the change here */
 }
 
-#task-frontend input[type="checkbox"] {
-	border: 1px solid red;
-	text-transform: none;
+#task-frontend footer {
+  position: absolute;
+  font-size: 0.8em;
+  bottom: 1em;
+  color: lightgray;
+  text-align: center;
+  text-shadow: -1px -1px 0 #222, 1px -1px 0 #222, -1px 1px 0 #222, 1px 1px 0 #222;
 }
 
-#task-frontend input[type="submit"] {
-	color: green;
-	margin-top: 10px;
-	width: 100px;
-	height: 30px;
-	text-align: center;
+#task-frontend footer a {
+  color: gray;
+  text-underline-offset: 2px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+#task-frontend footer a:hover, #task-frontend footer a:focus, #task-frontend footer a:active {
+  color: #555;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+@-webkit-keyframes opacityIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes opacityIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
